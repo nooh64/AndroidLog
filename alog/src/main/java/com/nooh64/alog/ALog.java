@@ -84,7 +84,7 @@ public class ALog {
         INSTANCE.putFooter(Type.WTF);
     }
 
-    public static void d(String msg) {
+    public static void d(String... msg) {
         INSTANCE.putHeader(Type.D);
         INSTANCE.putMessage(Type.D, msg);
         INSTANCE.putStackTrace(Type.D);
@@ -117,54 +117,6 @@ public class ALog {
     }
 
     public static void e(String msg) {
-        INSTANCE.putHeader(Type.E);
-        INSTANCE.putMessage(Type.E, msg);
-        INSTANCE.putStackTrace(Type.E);
-        INSTANCE.putFooter(Type.E);
-    }
-
-    public static void i(String tag, String msg) {
-        INSTANCE.setTag(tag);
-        INSTANCE.putHeader(Type.I);
-        INSTANCE.putMessage(Type.I, msg);
-        INSTANCE.putStackTrace(Type.I);
-        INSTANCE.putFooter(Type.I);
-    }
-
-    public static void v(String tag, String msg) {
-        INSTANCE.setTag(tag);
-        INSTANCE.putHeader(Type.V);
-        INSTANCE.putMessage(Type.V, msg);
-        INSTANCE.putStackTrace(Type.V);
-        INSTANCE.putFooter(Type.V);
-    }
-
-    public static void w(String tag, String msg) {
-        INSTANCE.setTag(tag);
-        INSTANCE.putHeader(Type.W);
-        INSTANCE.putMessage(Type.W, msg);
-        INSTANCE.putStackTrace(Type.W);
-        INSTANCE.putFooter(Type.W);
-    }
-
-    public static void wtf(String tag, String msg) {
-        INSTANCE.setTag(tag);
-        INSTANCE.putHeader(Type.WTF);
-        INSTANCE.putMessage(Type.WTF, msg);
-        INSTANCE.putStackTrace(Type.WTF);
-        INSTANCE.putFooter(Type.WTF);
-    }
-
-    public static void d(String tag, String msg) {
-        INSTANCE.setTag(tag);
-        INSTANCE.putHeader(Type.D);
-        INSTANCE.putMessage(Type.D, msg);
-        INSTANCE.putStackTrace(Type.D);
-        INSTANCE.putFooter(Type.D);
-    }
-
-    public static void e(String tag, String msg) {
-        INSTANCE.setTag(tag);
         INSTANCE.putHeader(Type.E);
         INSTANCE.putMessage(Type.E, msg);
         INSTANCE.putStackTrace(Type.E);
@@ -216,13 +168,14 @@ public class ALog {
         }
     }
 
-    private void putMessage(Type type, String Msg) {
-        log(type, "| " + Msg);
+    private void putMessage(Type type, String... messages) {
+        for (String message : messages)
+        log(type, "| " + messages);
     }
 
     private void putMessage(Type type, int... messages) {
         for (int message : messages)
-            log(type, "| " + message);
+            log(type, "| " + messages);
     }
 
     private void putMessage(Type type, long... messages) {
