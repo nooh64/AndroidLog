@@ -16,5 +16,6 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         ALog.d("Hello World","Hoy");
         ALog.d(1,2,3,4,5,6,7,8,9);
+        ALog.d(1.2,.13);
     }
 }
