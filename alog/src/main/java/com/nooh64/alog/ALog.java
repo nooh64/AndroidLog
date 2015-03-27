@@ -2,11 +2,7 @@ package com.nooh64.alog;
 
 import android.util.Log;
 
-/**
- * Freeface
- * Created by nooh.km on 27-03-2015.
- * (c) PK & pitsolutions
- */
+
 public class ALog {
     enum Type {D, E, I, V, W, WTF}
 
