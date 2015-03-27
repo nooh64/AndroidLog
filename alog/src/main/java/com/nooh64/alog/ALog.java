@@ -2,11 +2,9 @@ package com.nooh64.alog;
 
 import android.util.Log;
 
-/**
- * Freeface
- * Created by nooh.km on 27-03-2015.
- * (c) PK & pitsolutions
- */
+import java.util.List;
+
+
 public class ALog {
     enum Type {D, E, I, V, W, WTF}
 
@@ -88,6 +86,41 @@ public class ALog {
     }
 
     public static void d(String msg) {
+        INSTANCE.putHeader(Type.D);
+        INSTANCE.putMessage(Type.D, msg);
+        INSTANCE.putStackTrace(Type.D);
+        INSTANCE.putFooter(Type.D);
+    }
+
+    public static void d(List l) {
+        INSTANCE.putHeader(Type.D);
+        INSTANCE.putMessage(Type.D, l);
+        INSTANCE.putStackTrace(Type.D);
+        INSTANCE.putFooter(Type.D);
+    }
+
+    public static void d(int... msg) {
+        INSTANCE.putHeader(Type.D);
+        INSTANCE.putMessage(Type.D, msg);
+        INSTANCE.putStackTrace(Type.D);
+        INSTANCE.putFooter(Type.D);
+    }
+
+    public static void d(double... msg) {
+        INSTANCE.putHeader(Type.D);
+        INSTANCE.putMessage(Type.D, msg);
+        INSTANCE.putStackTrace(Type.D);
+        INSTANCE.putFooter(Type.D);
+    }
+
+    public static void d(long... msg) {
+        INSTANCE.putHeader(Type.D);
+        INSTANCE.putMessage(Type.D, msg);
+        INSTANCE.putStackTrace(Type.D);
+        INSTANCE.putFooter(Type.D);
+    }
+
+    public static void d(float... msg) {
         INSTANCE.putHeader(Type.D);
         INSTANCE.putMessage(Type.D, msg);
         INSTANCE.putStackTrace(Type.D);
@@ -194,8 +227,35 @@ public class ALog {
         }
     }
 
-    private void putMessage(Type type, String Msg) {
-        log(type, "| " + Msg);
+
+    private void putMessage(Type type, String... messages) {
+        for (String message : messages)
+            log(type, "| " + message);
+    }
+
+    private void putMessage(Type type, List list) {
+        for (Object item : list)
+            log(type, "| " + item.toString());
+    }
+
+    private void putMessage(Type type, int... messages) {
+        for (int message : messages)
+            log(type, "| " + message);
+    }
+
+    private void putMessage(Type type, double... messages) {
+        for (double message : messages)
+            log(type, "| " + message);
+    }
+
+    private void putMessage(Type type, long... messages) {
+        for (double message : messages)
+            log(type, "| " + message);
+    }
+
+    private void putMessage(Type type, float... messages) {
+        for (double message : messages)
+            log(type, "| " + message);
     }
 
     private void log(Type type, String msg) {

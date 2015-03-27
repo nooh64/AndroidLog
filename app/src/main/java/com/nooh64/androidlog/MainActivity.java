@@ -14,6 +14,7 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ALog.d("Hello");
+        ALog.d("Hello World","Hoy");
+        ALog.d(1,2,3,4,5,6,7,8,9);
     }
 }
