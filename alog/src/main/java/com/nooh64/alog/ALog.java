@@ -2,8 +2,11 @@ package com.nooh64.alog;
 
 import android.util.Log;
 
+<<<<<<< HEAD
 import java.util.List;
 
+=======
+>>>>>>> 9799a3e0f7203c48fa54a5eb69b1cf9bcd3d4987
 
 public class ALog {
     enum Type {D, E, I, V, W, WTF}
