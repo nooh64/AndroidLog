@@ -13,6 +13,7 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ALog.setHierarchy(4);
         ALog.d("Message 1","Message 2","Message 3");
         ALog.d(1,2,3);
         ALog.d(1.2,.13);

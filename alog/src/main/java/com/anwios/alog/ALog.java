@@ -11,7 +11,7 @@ public class ALog {
     // Constants
     // ===========================================================
     private static final ALog INSTANCE = new ALog();
-    private final String BREAK =     "+____________________________________________________________________________________________________________________________";
+    private final String BREAK =     "|____________________________________________________________________________________________________________________________";
     private final String MSG_BREAK = "+============================================================================================================================";
     // ===========================================================
     // Fields
@@ -56,28 +56,28 @@ public class ALog {
         return INSTANCE;
     }
 
-    public static void i(String msg) {
+    public static void i(String... msg) {
         INSTANCE.putHeader(Type.I);
         INSTANCE.putMessage(Type.I, msg);
         INSTANCE.putStackTrace(Type.I);
         INSTANCE.putFooter(Type.I);
     }
 
-    public static void v(String msg) {
+    public static void v(String... msg) {
         INSTANCE.putHeader(Type.V);
         INSTANCE.putMessage(Type.V, msg);
         INSTANCE.putStackTrace(Type.V);
         INSTANCE.putFooter(Type.V);
     }
 
-    public static void w(String msg) {
+    public static void w(String... msg) {
         INSTANCE.putHeader(Type.W);
         INSTANCE.putMessage(Type.W, msg);
         INSTANCE.putStackTrace(Type.W);
         INSTANCE.putFooter(Type.W);
     }
 
-    public static void wtf(String msg) {
+    public static void wtf(String... msg) {
         INSTANCE.putHeader(Type.WTF);
         INSTANCE.putMessage(Type.WTF, msg);
         INSTANCE.putStackTrace(Type.WTF);
@@ -126,30 +126,12 @@ public class ALog {
     private void putStackTrace(Type type) {
         if (showHierarchy) {
             log(type, INSTANCE.BREAK);
+            log(type, "| Stack Trace :");
             StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
             for (int i = 0; i < INSTANCE.hierarchyLevel; i++) {
-                String line = stackTraceElements[i + 4].getMethodName() + "  > " + stackTraceElements[i + 4].getFileName() + ":" + stackTraceElements[i + 4].getLineNumber();
+                String line = stackTraceElements[i + 4].getMethodName() + "  -> (" + stackTraceElements[i + 4].getFileName() + ":" + stackTraceElements[i + 4].getLineNumber()+")";
                 String space = String.format("%" + (i + 1) * 2 + "s", " ");
-                switch (type) {
-                    case D:
-                        Log.d(INSTANCE.tag, "|" + space + line);
-                        break;
-                    case E:
-                        Log.e(INSTANCE.tag, "|" + space + line);
-                        break;
-                    case I:
-                        Log.i(INSTANCE.tag, "|" + space + line);
-                        break;
-                    case V:
-                        Log.v(INSTANCE.tag, "|" + space + line);
-                        break;
-                    case W:
-                        Log.w(INSTANCE.tag, "|" + space + line);
-                        break;
-                    case WTF:
-                        Log.wtf(INSTANCE.tag, "|" + space + line);
-                        break;
-                }
+                log(type, "|" + space + line);
             }
         }
     }
@@ -158,6 +140,7 @@ public class ALog {
         if (showHeaderFooter) {
             log(type, "|");
             log(type, INSTANCE.MSG_BREAK);
+            log(type, "| Message :");
         }
     }
 
