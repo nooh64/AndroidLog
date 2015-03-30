@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.nooh64.androidlog" >
+    package="com.anwios.androidlog" >
 
     <application
         android:allowBackup="true"
