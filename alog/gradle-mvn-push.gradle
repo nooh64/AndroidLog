@@ -28,7 +28,7 @@ def getReleaseRepositoryUrl() {
 
 def getSnapshotRepositoryUrl() {
     return hasProperty('SNAPSHOT_REPOSITORY_URL') ? SNAPSHOT_REPOSITORY_URL
-            : "https://oss.sonatype.org/content/repositories/snapshots/"
+            : "https://github.com/nooh64/AndroidLog/"
 }
 
 def getRepositoryUsername() {
@@ -46,7 +46,7 @@ afterEvaluate { project ->
                 beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
 
                 pom.groupId = GROUP
-                pom.artifactId = POM_ARTIFACT_ID
+                pom.artifactId = 'android-log'
                 pom.version = VERSION_NAME
 
                 repository(url: getReleaseRepositoryUrl()) {
@@ -57,29 +57,29 @@ afterEvaluate { project ->
                 }
 
                 pom.project {
-                    name POM_NAME
-                    packaging POM_PACKAGING
-                    description POM_DESCRIPTION
-                    url POM_URL
+                    name "Android-Log"
+                    packaging "aar"
+                    description "Android Log"
+                    url "https://github.com/nooh64/AndroidLog"
 
                     scm {
-                        url POM_SCM_URL
-                        connection POM_SCM_CONNECTION
-                        developerConnection POM_SCM_DEV_CONNECTION
+                        url "https://github.com/nooh64/AndroidLog"
+                        connection "scm:git@github.com:nooh64/AndroidLog.git"
+                        developerConnection "scm:git@github.com:nooh64/AndroidLog.git"
                     }
 
                     licenses {
                         license {
-                            name POM_LICENCE_NAME
-                            url POM_LICENCE_URL
-                            distribution POM_LICENCE_DIST
+                            name "The Apache Software License, Version 2.0"
+                            url "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                            distribution "repo"
                         }
                     }
 
                     developers {
                         developer {
-                            id POM_DEVELOPER_ID
-                            name POM_DEVELOPER_NAME
+                            id "nooh64"
+                            name "Nooh KVM"
                         }
                     }
                 }
