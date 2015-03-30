@@ -3,16 +3,25 @@ AndroidLog - Simple Android Logs
 
 ##Usage
 
- ```ALog.d("Message");```
- ```ALog.d("Message1","Message2","Message3");```
- ```ALog.d(1,2,3,4);```
- ```ALog.setHierarchy(2).setTag("ALOG");```
- ```ALog.e("Message");```
- ```ALog.showHierarchy(false).showHeaderAndFooter(false).d("Hello World");```
+```java
+    ALog.d("Message");
+    ALog.d("Message1","Message2","Message3");
+    ALog.d(1,2,3,4);
+    ALog.setHierarchy(2).setTag("ALOG");
+    ALog.e("Message");
+    ALog.showHierarchy(false).showHeaderAndFooter(false).d("Hello World");
+ ```
  
+## Contributions
+
+Any contributions are welcome! 
+
+## Developed By
+* Nooh - <nooh64@gmail.com> 
+
 ## License
 
-    Copyright 2014 Soichiro Kashima
+    Copyright 2014 NOOH KVM
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
