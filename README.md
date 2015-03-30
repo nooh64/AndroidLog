@@ -11,7 +11,11 @@ AndroidLog - Simple Android Logs
     ALog.e("Message");
     ALog.showHierarchy(false).showHeaderAndFooter(false).d("Hello World");
  ```
+ sample  1
+ ![sample 1](samples/sample1.jpg)
  
+ sample 2
+ ![sample 2](samples/sample2.jpg)
 ## Contributions
 
 Any contributions are welcome! 
