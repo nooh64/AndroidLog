@@ -170,12 +170,12 @@ public class ALog {
 
     private void putMessage(Type type, String... messages) {
         for (String message : messages)
-        log(type, "| " + messages);
+        log(type, "| " + message);
     }
 
     private void putMessage(Type type, int... messages) {
         for (int message : messages)
-            log(type, "| " + messages);
+            log(type, "| " + message);
     }
 
     private void putMessage(Type type, long... messages) {
