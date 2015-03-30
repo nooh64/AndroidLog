@@ -12,10 +12,10 @@ AndroidLog - Simple Android Logs
     ALog.showHierarchy(false).showHeaderAndFooter(false).d("Hello World");
  ```
  sample  1
- ![sample 1](images/sample1.jpg)
+ ![sample 1](images/sample1.png)
  
  sample 2
- ![sample 2](images/sample2.jpg)
+ ![sample 2](images/sample2.png)
 ## Contributions
 
 Any contributions are welcome! 
