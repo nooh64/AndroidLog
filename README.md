@@ -10,6 +10,7 @@ AndroidLog - Simple Android Logs
     ALog.setHierarchy(2).setTag("ALOG");
     ALog.e("Message");
     ALog.showHierarchy(false).showHeaderAndFooter(false).d("Hello World");
+    ALog.toast(this,"Hello");
  ```
  sample  1
  ![sample 1](images/sample1.png)
