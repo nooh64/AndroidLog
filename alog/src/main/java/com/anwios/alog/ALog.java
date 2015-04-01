@@ -1,7 +1,9 @@
 package com.anwios.alog;
 
 
+import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 
 public class ALog {
@@ -121,6 +123,10 @@ public class ALog {
         INSTANCE.putMessage(Type.E, msg);
         INSTANCE.putStackTrace(Type.E);
         INSTANCE.putFooter(Type.E);
+    }
+
+    public static void toast(Context context,String message){
+        Toast.makeText(context,message,Toast.LENGTH_SHORT).show();
     }
 
     private void putStackTrace(Type type) {

@@ -17,5 +17,6 @@ public class MainActivity extends ActionBarActivity {
         ALog.d("Message 1","Message 2","Message 3");
         ALog.d(1,2,3);
         ALog.d(1.2,.13);
+        ALog.toast(this,"Hello");
     }
 }
