@@ -2,17 +2,24 @@ package com.anwios.alog;
 
 
 import android.content.Context;
+import android.database.Cursor;
 import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.util.List;
 
-public class ALog {
+
+public class Logs {
     enum Type {D, E, I, V, W, WTF}
 
     // ===========================================================
     // Constants
     // ===========================================================
-    private static final ALog INSTANCE = new ALog();
+    private static final Logs INSTANCE = new Logs();
     private final String BREAK =     "|____________________________________________________________________________________________________________________________";
     private final String MSG_BREAK = "+============================================================================================================================";
     // ===========================================================
@@ -38,24 +45,31 @@ public class ALog {
     // ===========================================================
     // Methods
     // ===========================================================
-    public static ALog setTag(String tag) {
+    public static Logs setTag(String tag) {
         INSTANCE.tag = tag;
         return INSTANCE;
     }
 
-    public static ALog setHierarchy(int length) {
+    public static Logs setHierarchy(int length) {
         INSTANCE.hierarchyLevel = length;
         return INSTANCE;
     }
 
-    public static ALog showHeaderAndFooter(boolean b) {
+    public static Logs showHeaderAndFooter(boolean b) {
         INSTANCE.showHeaderFooter = b;
         return INSTANCE;
     }
 
-    public static ALog showHierarchy(boolean b) {
+    public static Logs showHierarchy(boolean b) {
         INSTANCE.showHierarchy = b;
         return INSTANCE;
+    }
+
+    public static void a(Object o) {
+        INSTANCE.putHeader(Type.I);
+        INSTANCE.processObject(o);
+        INSTANCE.putStackTrace(Type.I);
+        INSTANCE.putFooter(Type.I);
     }
 
     public static void i(String... msg) {
@@ -204,6 +218,58 @@ public class ALog {
                 break;
         }
     }
+    private void processObject(Object obj) {
+        if(obj==null) {
+            Logs.d(" its Null");
+        }else if (obj instanceof File) {
+            File file = (File) obj;
+            String path = file.getAbsolutePath();
+            String size;
+            if (file.exists()) {
+                size = " Size " + file.length() + " bytes";
+            } else {
+                size = " File not exists";
+            }
+            putMessage(Type.D," Path " + path, size);
+        } else if (obj instanceof List) {
+            List list= (List) obj;
+            int size=list.size();
+            putMessage(Type.D,"List Size " + size,"Elements :");
+            for(Object o:list){
+                putMessage(Type.D, "  " + o.toString());
+            }
+        }else if (obj instanceof Cursor) {
+            Cursor cursor= (Cursor) obj;
+            int size= cursor.getCount();
+            int column=cursor.getColumnCount();
+            putMessage(Type.D,"rows " + size,"columns "+column);
+        }else if (obj instanceof TextView) {
+            TextView textView= (TextView) obj;
+            float x=textView.getX();
+            float y=textView.getY();
+            float hight=textView.getHeight();
+            float width=textView.getWidth();
+            CharSequence text=textView.getText();
+            putMessage(Type.D," Text : " + text," x :"+x+", y :"+y," width :"+width+", hight :"+hight);
+        }else if (obj instanceof ViewGroup) {
+            ViewGroup group= (ViewGroup) obj;
+            float x=group.getX();
+            float y=group.getY();
+            float hight=group.getHeight();
+            float width=group.getWidth();
+            int   childrens=group.getChildCount();
+            putMessage(Type.D," Child Count :" + childrens," x :"+x+", y :"+y," width :"+width+", hight :"+hight);
+        }else if (obj instanceof View) {
+            View view= (View) obj;
+            float x=view.getX();
+            float y=view.getY();
+            float hight=view.getHeight();
+            float width=view.getWidth();
+            putMessage(Type.D," x :"+x+", y :"+y," width :"+width+", hight :"+hight);
+        }else{
+            putMessage(Type.D," Class Name : "+obj.getClass().toString()," String value : "+obj.toString()," Hash Code : "+obj.hashCode());
+        }
 
+    }
 
 }
