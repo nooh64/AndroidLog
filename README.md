@@ -3,6 +3,19 @@ AndroidLog - Simple Android Logs
 
 ##Usage
 
+###Adding Library
+
+you just add the following dependency to your build.gradle:
+
+```groovy 
+ dependencies {  
+    repositories {
+        mavenCentral()
+    }
+    compile 'com.anwios.alog:android-log:1.1.0'
+  }
+```
+### example codes
 ```java
     ALog.d("Message");
     ALog.d("Message1","Message2","Message3");
