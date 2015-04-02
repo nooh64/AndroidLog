@@ -17,13 +17,24 @@ you just add the following dependency to your build.gradle:
 ```
 ### example codes
 ```java
-    ALog.d("Message");
-    ALog.d("Message1","Message2","Message3");
-    ALog.d(1,2,3,4);
-    ALog.setHierarchy(2).setTag("ALOG");
-    ALog.e("Message");
-    ALog.showHierarchy(false).showHeaderAndFooter(false).d("Hello World");
-    ALog.toast(this,"Hello");
+        Logs.d("Message 1", "Message 2", "Message 3");
+        Logs.d(1, 2, 3);
+        Logs.d(1.2, .13);
+        Logs.toast(context, "Hello");
+        Logs.setHierarchy(2).setTag("ALOG");
+        
+        List list=new ArrayList<String>();
+        list.add("qwert");
+        list.add("asdfgh");
+        list.add("zxcvbn");
+        Logs.a(list);
+
+        EditText b=new EditText(context);
+        b.setText("Helllo");
+        Logs.a(b);
+
+        File f=new File("/hello");
+        Logs.a(f);
  ```
  sample  1
  ![sample 1](images/sample1.png)
