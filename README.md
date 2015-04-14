@@ -12,7 +12,7 @@ you just add the following dependency to your build.gradle:
     repositories {
         mavenCentral()
     }
-    compile 'com.anwios.alog:android-log:1.2.1'
+    compile 'com.anwios.alog:android-log:1.2.3'
   }
 ```
 ### example codes
