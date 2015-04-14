@@ -114,12 +114,10 @@ public class Logs {
             INSTANCE.printNull();
 
         } else {
-            float x = textView.getX();
-            float y = textView.getY();
             float hight = textView.getHeight();
             float width = textView.getWidth();
             CharSequence text = textView.getText();
-            INSTANCE.putMessage(Type.D, " Text : " + text, " x :" + x + ", y :" + y, " width :" + width + ", hight :" + hight);
+            INSTANCE.putMessage(Type.D, " Text : " + text, " width :" + width + ", hight :" + hight);
         }
         INSTANCE.putStackTrace(Type.I);
     }
@@ -129,12 +127,10 @@ public class Logs {
             INSTANCE.printNull();
 
         } else {
-            float x = viewGroup.getX();
-            float y = viewGroup.getY();
             float hight = viewGroup.getHeight();
             float width = viewGroup.getWidth();
             int childrens = viewGroup.getChildCount();
-            INSTANCE.putMessage(Type.D, " Child Count :" + childrens, " x :" + x + ", y :" + y, " width :" + width + ", hight :" + hight);
+            INSTANCE.putMessage(Type.D, " Child Count :" + childrens, " width :" + width + ", hight :" + hight);
         }
         INSTANCE.putStackTrace(Type.I);
     }
@@ -144,11 +140,9 @@ public class Logs {
             INSTANCE.printNull();
 
         } else {
-            float x = view.getX();
-            float y = view.getY();
             float hight = view.getHeight();
             float width = view.getWidth();
-            INSTANCE.putMessage(Type.D, " x :" + x + ", y :" + y, " width :" + width + ", hight :" + hight);
+            INSTANCE.putMessage(Type.D,  " width :" + width + ", hight :" + hight);
         }
         INSTANCE.putStackTrace(Type.I);
     }

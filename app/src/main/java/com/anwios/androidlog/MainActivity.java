@@ -1,11 +1,8 @@
 package com.anwios.androidlog;
 
-import android.content.pm.LabeledIntent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 
 import com.anwios.alog.Logs;
 import java.io.File;
@@ -37,9 +34,7 @@ public class MainActivity extends ActionBarActivity {
         b.setText("Helllo");
         Logs.a(b);
 
-        LayoutInflater inflater=getLayoutInflater();
-        RelativeLayout layout= (RelativeLayout) inflater.inflate(R.layout.activity_main, null);
-        Logs.a(layout);
+
 
         File f=new File("/hello");
         Logs.a(f);
