@@ -12,7 +12,7 @@ you just add the following dependency to your build.gradle:
     repositories {
         mavenCentral()
     }
-    compile 'com.anwios.alog:android-log:1.2.3'
+    compile 'com.anwios.alog:android-log:1.3.1'
   }
 ```
 ### example codes
@@ -33,8 +33,17 @@ you just add the following dependency to your build.gradle:
         b.setText("Helllo");
         Logs.a(b);
 
+		//File
         File f=new File("/hello");
         Logs.a(f);
+		
+		//Database
+		//print cursor contents
+		Logs.db(cursor,"id","name","description");
+		
+		//inspect cursor row 
+		cursor.moveToPosition(10);
+        Logs.dbRow(cursor,"id","name","description");
  ```
  sample  1
  ![sample 1](images/sample1.png)
