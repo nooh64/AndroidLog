@@ -212,6 +212,43 @@ public class Logs {
         INSTANCE.putStackTrace(Type.E);
     }
 
+    public static void db(Cursor c,String... cols) {
+        INSTANCE.putHeader(Type.D);
+        StringBuilder title=new StringBuilder();
+        for(String col:cols){
+            title.append(col);
+            title.append("\t\t");
+        }
+        INSTANCE.putMessage(Type.D, title.toString());
+        INSTANCE.log(Type.D, INSTANCE.BREAK);
+        while(c.moveToNext()){
+            StringBuilder builder=new StringBuilder();
+            for(String col:cols){
+                builder.append(c.getString(c.getColumnIndexOrThrow(col)));
+                builder.append("\t\t");
+            }
+            INSTANCE.putMessage(Type.D, builder.toString());
+        }
+        INSTANCE.putStackTrace(Type.D);
+    }
+
+    public static void dbRow(Cursor c,String... cols) {
+        INSTANCE.putHeader(Type.D);
+        StringBuilder title=new StringBuilder();
+        for(String col:cols){
+            title.append(col);
+            title.append("\t\t");
+        }
+        INSTANCE.log(Type.D, INSTANCE.BREAK);
+        INSTANCE.putMessage(Type.D, title.toString());
+        StringBuilder builder=new StringBuilder();
+        for(String col:cols){
+            builder.append(c.getString(c.getColumnIndexOrThrow(col)));
+            builder.append("\t\t");
+        }
+        INSTANCE.putMessage(Type.D, builder.toString());
+        INSTANCE.putStackTrace(Type.D);
+    }
 
     public static void toast(Context context, String message) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
